@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import './bootstrap.min.css';
-import './index.css';
+// import './bootstrap.min.css';
+import './custom.scss';
 import App from './App';
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <SimpleReactLightbox>
+      <App />
+    </SimpleReactLightbox>
   </Provider>,
   document.getElementById('root')
 );
