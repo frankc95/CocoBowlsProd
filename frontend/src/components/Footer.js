@@ -41,7 +41,7 @@ const Footer = () => {
                 <span className='footer-title'>Company</span>
               </li>
               <li className='nav-item'>
-                <Link to='/'>About us</Link>
+                <Link to='/about'>About us</Link>
               </li>
               <li className='nav-item'>
                 <Link to='/'>Job postings</Link>
@@ -65,13 +65,13 @@ const Footer = () => {
                 </span>
               </li>
               <li className='nav-item'>
-                <Link to='/'>FAQs</Link>
+                <Link to='/contact'>FAQs</Link>
               </li>
               <li className='nav-item'>
-                <Link to='/'>Contact us</Link>
+                <Link to='/contact'>Contact us</Link>
               </li>
               <li className='nav-item'>
-                <Link to='/'>Give feedback</Link>
+                <a href='https://www.google.com'>Give feedback</a>
               </li>
             </ul>
           </Col>

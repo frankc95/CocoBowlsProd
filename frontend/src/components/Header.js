@@ -36,6 +36,11 @@ const Header = () => {
                 <NavDropdown.Item href='/#bowls'>Bowls</NavDropdown.Item>
                 <NavDropdown.Item href='/#cutlery'>Cutlery</NavDropdown.Item>
               </NavDropdown>
+              <LinkContainer to='/contact'>
+                <Nav.Link>
+                  <i className='fas fa-envelope'></i> Contact
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
