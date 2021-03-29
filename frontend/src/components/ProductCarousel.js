@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
 import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
+import Rating from './Rating';
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ const ProductCarousel = () => {
               <Carousel.Caption>
                 <h1>{product.name}</h1>
                 <h1>£{product.price}</h1>
+                <Rating
+                  value={product.rating}
+                  text={`${product.numReviews} reviews`}
+                />
               </Carousel.Caption>
             </Link>
           </div>

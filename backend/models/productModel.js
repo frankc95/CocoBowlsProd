@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 
+// create schema object and define all fields, their types and requirement.
 const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
+    // this rating is the individual rating for given product by given user
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
     user: {
@@ -16,9 +18,11 @@ const reviewSchema = mongoose.Schema(
   }
 );
 
+// create schema object and define all fields, their types and requirement.
 const productSchema = mongoose.Schema(
   {
     user: {
+      // import user ID and reference User model to add relationship between the product and the user
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
@@ -53,6 +57,7 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     reviews: [reviewSchema],
+    // this rating is the average of all ratings
     rating: {
       type: Number,
       required: true,
@@ -79,6 +84,8 @@ const productSchema = mongoose.Schema(
   }
 );
 
+// Create model for this schema in DB
 const Product = mongoose.model('Product', productSchema);
 
+// Export it
 export default Product;

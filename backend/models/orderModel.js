@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
+// create schema object and define all fields, their types and requirement.
 const orderSchema = mongoose.Schema(
   {
+    // import user ID and reference User model to add relationship between the order and the user
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -13,6 +15,7 @@ const orderSchema = mongoose.Schema(
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
+        // import user ID and reference Product model to add relationship between the order and the product
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
@@ -73,6 +76,8 @@ const orderSchema = mongoose.Schema(
   }
 );
 
+// Create model for this schema in DB
 const Order = mongoose.model('Order', orderSchema);
 
+// Export it
 export default Order;

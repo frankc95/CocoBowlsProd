@@ -24,12 +24,17 @@ import ContactScreen from './screens/ContactScreen';
 
 const App = () => {
   return (
+    // Allowing routing throughout the app
     <Router>
+      {/* scrolls to top of page when new component loads */}
       <ScrollToTop>
         <Header />
         <main>
+          {/* Bootstrap container */}
           <Container>
+            {/* Looks for a matching <Route> and once it finds it, it will stop looking further, outputting only one child (One Route) */}
             <Switch>
+              {/* Route is being matched with <Link> via path and loads appropriate component */}
               <Route path='/order/:id' component={OrderScreen} />
               <Route path='/placeorder' component={PlaceOrderScreen} />
               <Route path='/payment' component={PaymentScreen} />

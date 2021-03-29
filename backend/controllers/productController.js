@@ -29,11 +29,16 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
+  // grab id from URI and assign it to product constant
   const product = await Product.findById(req.params.id);
 
+  // if there is a product
   if (product) {
+    // return product
     res.json(product);
+    // if not, send and error
   } else {
+    // Having custom error handler allows changing -> res.status(404).json({ message: 'product not found' }) to
     res.status(404);
     throw new Error('Product not found');
   }

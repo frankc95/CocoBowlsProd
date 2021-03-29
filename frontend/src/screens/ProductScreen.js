@@ -11,6 +11,7 @@ import { listProductDetails, reviewProduct } from '../actions/productActions';
 import { PRODUCT_REVIEW_RESET } from '../constants/productConstants';
 
 const ProductScreen = ({ history, match }) => {
+  // useState hook takes two parameters, name of the initial state and name the function that will chage the state. It also takes a default value inside ().
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -29,6 +30,7 @@ const ProductScreen = ({ history, match }) => {
     error: errorProductReview,
   } = productReview;
 
+  // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (successProductReview) {
       alert('Review Submitted!');
@@ -74,9 +76,10 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <Link className='btn btn-primary my-3' to='/'>
         Go Back
       </Link>
+      {/* If loading show loader component, if error show message component, else, show product details */}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -85,7 +88,7 @@ const ProductScreen = ({ history, match }) => {
         <>
           <Meta title={product.name} />
           <Row className='justify-content-center'>
-            <Col md={4} className='product-img'>
+            <Col xl={4} lg={5} md={6} className='product-img'>
               <SRLWrapper options={options}>
                 <Image src={product.image} alt={product.name} fluid />
                 <Image src={product.image2} alt='' fluid />
@@ -93,7 +96,7 @@ const ProductScreen = ({ history, match }) => {
                 <Image src={product.image4} alt='' fluid />
               </SRLWrapper>
             </Col>
-            <Col md={4}>
+            <Col xl={5} lg={7} md={6}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
@@ -106,7 +109,6 @@ const ProductScreen = ({ history, match }) => {
                     />
                   )}
                 </ListGroup.Item>
-                <ListGroup.Item>Price: £{product.price}</ListGroup.Item>
                 <ListGroup.Item variant='flush'>
                   <Row>
                     <Col>Price:</Col>
@@ -211,7 +213,11 @@ const ProductScreen = ({ history, match }) => {
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to='/login'>sign in</Link> to leave a review{' '}
+                      Please{' '}
+                      <Link to='/login'>
+                        <strong>sign in</strong>
+                      </Link>{' '}
+                      to leave a review{' '}
                     </Message>
                   )}
                 </ListGroup.Item>

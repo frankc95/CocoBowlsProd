@@ -33,6 +33,7 @@ const HomeScreens = ({ match }) => {
   const productCatCutlery = useSelector((state) => state.productCatCutlery);
   const { products: productsCatCutlery } = productCatCutlery;
 
+  // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
     dispatch(listCatBowlProducts());
@@ -40,13 +41,7 @@ const HomeScreens = ({ match }) => {
     dispatch(listCatCutleryProducts());
   }, [dispatch, keyword, pageNumber]);
 
-  // useEffect(() => {
-  //   dispatch(listProducts(keyword));
-  //   dispatch(listCatBowlProducts());
-  //   dispatch(listCatSetProducts());
-  //   dispatch(listCatCutleryProducts());
-  // }, [dispatch, keyword]);
-
+  // carousel breakpoints
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 500, itemsToShow: 2 },
@@ -66,7 +61,7 @@ const HomeScreens = ({ match }) => {
           Go Back
         </Link>
       )}
-      {/* <h1>Latest Products</h1> */}
+      {/* If loading show loader component, if error show message component, if search keyword show searched product/s, else, show carousels with products */}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -76,6 +71,7 @@ const HomeScreens = ({ match }) => {
           {keyword ? (
             <>
               <Row className='py-3'>
+                {/* Looping through products array */}
                 {products.map((product) => (
                   <Col
                     key={product._id}
@@ -85,6 +81,7 @@ const HomeScreens = ({ match }) => {
                     xl={3}
                     className='py-3'
                   >
+                    {/* Passing props to child component - (Product) */}
                     <Product product={product} />
                   </Col>
                 ))}

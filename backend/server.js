@@ -1,22 +1,27 @@
-// require is a standard expression that node.js uses
+// require is a standard expression that node.js uses -> i.e. const express = require('express');
 // ES6 uses import instead
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import morgan from 'morgan';
+// import custom error middleware
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 
+// import all routes
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 
+// initialize dotenv - this links with .env file in root folder
 dotenv.config();
 
+// call connectDB
 connectDB();
 
+// call express
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
@@ -25,6 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 
+// mouting routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
@@ -49,12 +55,15 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// call notFound middleware
 app.use(notFound);
-
+// call error middleware
 app.use(errorHandler);
 
+// PORT = PORT var from .env file or 5000
 const PORT = process.env.PORT || 5000;
 
+// Server running in development mode on port 5000
 app.listen(
   PORT,
   console.log(

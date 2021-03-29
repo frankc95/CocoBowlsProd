@@ -13,6 +13,7 @@ import {
 } from '../controllers/productController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
+// call router
 const router = express.Router();
 
 router.route('/').get(getProducts).post(protect, admin, createProduct);

@@ -88,10 +88,21 @@ h3 {
 nav {
   .navbar-nav {
     align-items: center;
+    width: 100% !important;
   }
 
   .navbar-toggler {
     margin-left: auto;
+  }
+
+  .mr-auto {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .ml-auto {
+    display: flex !important;
+    align-items: center !important;
   }
 
   .dropdown-toggle::after {
