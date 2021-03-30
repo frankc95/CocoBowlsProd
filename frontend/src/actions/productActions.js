@@ -36,33 +36,48 @@ import {
 // ACTION CREATORS ->
 
 // Action creator for all products
+// Redux Thunk allows adding a function within a function->
+// ...listProducts = () => async (dispatch) => {}
 export const listProducts = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
+  // try/catch statement used to distinguish between responses.
   try {
+    // action type
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
+    // request to api/products
     const { data } = await axios.get(
       `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     );
 
+    // if the response is OK, dispatch product list success
     dispatch({
+      // action type
       type: PRODUCT_LIST_SUCCESS,
+      // attach payload
       payload: data,
     });
   } catch (error) {
+    // if the response isn't OK, dispatch object type product list fail
     dispatch({
+      // action type
       type: PRODUCT_LIST_FAIL,
+      // attach payload
       payload:
+        // check for generic server error && a custom one
         error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+          ? // if custom, display custom
+            error.response.data.message
+          : // if not, display server error
+            error.message,
     });
   }
 };
 
 // Action creator details of a product
 export const listProductDetails = (id) => async (dispatch) => {
+  // try/catch used to distinguish between responses.
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 

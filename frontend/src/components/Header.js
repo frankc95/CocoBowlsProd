@@ -81,13 +81,13 @@ const Header = () => {
                         </LinkContainer>
 
                         <NavDropdown.Item onClick={logoutHandler}>
-                          Logout
+                          <i class='fas fa-sign-out-alt'></i>Logout
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
                       <LinkContainer to='/login'>
                         <Nav.Link>
-                          <i className='fas fa-shopping-cart'></i> Sign In
+                          <i class='fas fa-sign-in-alt'></i> Sign In
                         </Nav.Link>
                       </LinkContainer>
                     )}

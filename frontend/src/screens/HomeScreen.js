@@ -19,26 +19,38 @@ const HomeScreens = ({ match }) => {
 
   const pageNumber = match.params.pageNumber || 1;
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
+  // productList links back to productList defined in store.js file
   const productList = useSelector((state) => state.productList);
   const { loading, products, error, page, pages } = productList;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productCatBowl = useSelector((state) => state.productCatBowl);
+  // variable names must be unique when used in the same component hence the reason for assigning difderent var name for products.
   const { products: productsCatBowl } = productCatBowl;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productCatSet = useSelector((state) => state.productCatSet);
   const { products: productsCatSet } = productCatSet;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productCatCutlery = useSelector((state) => state.productCatCutlery);
   const { products: productsCatCutlery } = productCatCutlery;
 
   // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
   useEffect(() => {
+    // sends a request to the backend to list all the products
     dispatch(listProducts(keyword, pageNumber));
+    // sends a request to the backend to list all the category bowl products
     dispatch(listCatBowlProducts());
+    // sends a request to the backend to list all the category set products
     dispatch(listCatSetProducts());
+    // sends a request to the backend to list all the category cutlery products
     dispatch(listCatCutleryProducts());
+    // an array[] with dependencies
   }, [dispatch, keyword, pageNumber]);
 
   // carousel breakpoints
@@ -49,6 +61,7 @@ const HomeScreens = ({ match }) => {
     { width: 1100, itemsToShow: 4 },
   ];
 
+  // return JSX
   return (
     <>
       <Meta title='Home' />
