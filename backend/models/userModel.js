@@ -28,7 +28,9 @@ const userSchema = mongoose.Schema(
   }
 );
 
+// method that can be accessed with an instantiated user
 userSchema.methods.matchPassword = async function (enteredPassword) {
+  // the method compare will compare the plain text password with the one in database that is encrypted
   return await bcrypt.compare(enteredPassword, this.password);
 };
 

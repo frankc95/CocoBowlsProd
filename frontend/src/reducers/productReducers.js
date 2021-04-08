@@ -65,7 +65,7 @@ export const productListReducer = (state = { products: [] }, action) => {
 // handles the state for the product details.
 // takes two parameters, initial state and an action reducer
 export const productDetailsReducer = (
-  state = { product: { reviews: [], images: [] } },
+  state = { product: { reviews: [] } },
   action
 ) => {
   // ACTUAL ACTIONS ->

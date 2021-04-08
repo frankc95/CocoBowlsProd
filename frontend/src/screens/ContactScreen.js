@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ContactForm from '../components/ContactForm';
 import FAQs from '../components/FAQs';
+import Meta from '../components/Meta';
 
 const ContactScreen = () => {
   const [faqs, setfaqs] = useState([
@@ -58,6 +59,7 @@ const ContactScreen = () => {
 
   return (
     <>
+      <Meta title='Contact Us' />
       <Row className='py-3 justify-content-center'>
         <Col md={8}>
           <div className='faqs'>

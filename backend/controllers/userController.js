@@ -6,16 +6,21 @@ import User from '../models/userModel.js';
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
+  // de-structure email & password from the body
   const { email, password } = req.body;
 
+  // find the user by email
   const user = await User.findOne({ email });
 
+  // check if user exists & match plain password with encrypted password - userModel method
   if (user && (await user.matchPassword(password))) {
+    // return
     res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      // call generateToken
       token: generateToken(user._id),
     });
   } else {

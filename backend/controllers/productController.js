@@ -1,6 +1,8 @@
 import asyncHandler from 'express-async-handler';
 import Product from '../models/productModel.js';
 
+// The largest purpose of using controllers is to separate the functionality from routes. Controllers will handle the functionality and routes will point to controller methods.
+
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public

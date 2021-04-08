@@ -65,6 +65,8 @@ const reducer = combineReducers({
   orderList: orderListReducer,
 });
 
+// USE JSON.parse to pass it back to JavaScript
+
 // If there is a object in local storage, get it and if not, get empty array
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))

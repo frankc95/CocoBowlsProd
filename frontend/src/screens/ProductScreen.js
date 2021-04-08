@@ -11,11 +11,12 @@ import { listProductDetails, reviewProduct } from '../actions/productActions';
 import { PRODUCT_REVIEW_RESET } from '../constants/productConstants';
 
 const ProductScreen = ({ history, match }) => {
-  // useState hook takes two parameters, name of the initial state and name the function that will chage the state. It also takes a default value inside ().
+  // useState hook takes two parameters, name of the initial state and name the function that will change the state. It also takes a default value inside ().
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -42,6 +43,9 @@ const ProductScreen = ({ history, match }) => {
   }, [dispatch, match, successProductReview]);
 
   const addToCartHandler = () => {
+    // I destructured history from props as history is needed to use push so redirect is available.
+    // match.params.id is used to get the id from URI
+    // I pass the quantity by adding query string (?) of qty and set it to whatever ${qty} is.
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
@@ -126,16 +130,23 @@ const ProductScreen = ({ history, match }) => {
                   </Row>
                 </ListGroup.Item>
 
+                {/* product.countInStock is greater than 0, then display the following: */}
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <Row>
                       <Col>Qty:</Col>
                       <Col>
+                        {/* Form.Control has assigned the following props */}
                         <Form.Control
                           as='select'
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >
+                          {/* I began by opening an array '[]', I use the spread operator '...' and then the array constructor 'Array()', which takes product.countInStock as the parameter.  
+                        .keys() will separate each individual quantity value with a coma - ','
+                        .map() method will map through an array
+                        array starts with 0 and I wish the output to be eg. 1,2,3,4,5 instead of 0,1,2,3,4 , hence the reason for setting whatever the x is + 1
+                        */}
                           {[...Array(product.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                               {x + 1}
@@ -152,6 +163,7 @@ const ProductScreen = ({ history, match }) => {
                     onClick={addToCartHandler}
                     className='btn-block'
                     type='button'
+                    // disabled prop to disable button with not in stock
                     disabled={product.countInStock === 0}
                   >
                     Add To Cart

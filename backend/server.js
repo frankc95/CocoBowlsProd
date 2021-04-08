@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// this allows accepting JSON data in the body. Needed for req.body to request email, password, etc.
 app.use(express.json());
 
 // mouting routes

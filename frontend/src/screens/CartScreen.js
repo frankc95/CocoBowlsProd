@@ -12,35 +12,47 @@ import {
 } from 'react-bootstrap';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import Meta from '../components/Meta';
 
 const CartScreen = ({ match, location, history }) => {
+  // get product id from URI
   const productId = match.params.id;
 
+  // to get the actual quantity, location.search is necessary. location.search on its own will get ?gty=x from the URI. I only want the number, hence the reason for setting the output into the Number and splitting on the = sign. This would return an array with ?qty at [0] index and x at [1] index. I want [1] index.
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // useSelector to get cart from the state
   const cart = useSelector((state) => state.cart);
+  // from cart pull out cartItems
   const { cartItems } = cart;
 
+  // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
   useEffect(() => {
+    // only dispatch addToCart if there is a productId
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
+  // remove from cart handler function that takes an id as a paremeter.
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
 
+  // history used to redirect
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping');
   };
 
   return (
     <Row className='py-3'>
+      <Meta title='Checkout' />
       <Col md={8}>
         <h1>Shopping Cart</h1>
+        {/* check if there is anything in the cart. If there isn't, show message. If there is, show product info in the cart  */}
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to='/'>Go Back</Link>
@@ -93,11 +105,13 @@ const CartScreen = ({ match, location, history }) => {
         <Card>
           <ListGroup variant='flush'>
             <ListGroup.Item>
+              {/* Get the number of item and the quantity */}
+              {/* Reduce array high order method takes an arrow function with an accumulator and whatever the current item is. 0 is set as the second argument */}
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              $
+              {/* Get the price for all items and their quantity */}$
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}

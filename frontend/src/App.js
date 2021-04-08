@@ -43,6 +43,7 @@ const App = () => {
               <Route path='/register' component={RegisterScreen} />
               <Route path='/profile' component={ProfileScreen} />
               <Route path='/product/:id' component={ProductScreen} />
+              {/* ? at the end of :id means that this is optional. Mainly because, when user goes streight into cart link, there may not be any ID in it*/}
               <Route path='/cart/:id?' component={CartScreen} />
               <Route path='/contact' component={ContactScreen} />
               <Route path='/admin/userlist' component={UserListScreen} />
