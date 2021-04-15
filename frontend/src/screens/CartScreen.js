@@ -111,7 +111,7 @@ const CartScreen = ({ match, location, history }) => {
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              {/* Get the price for all items and their quantity */}$
+              {/* Get the price for all items and their quantity */}£
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
