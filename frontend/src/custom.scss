@@ -428,6 +428,13 @@ nav {
   overflow: hidden;
 }
 
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  min-height: 260px;
+  object-fit: cover;
+}
+
 ////////////////////////////////////////* Product Screen *////////////////////////////////////
 
 .product-img img {
