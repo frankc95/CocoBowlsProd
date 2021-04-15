@@ -27,6 +27,12 @@ $social-buttons-circle-dark-grey: #1a1d20;
 
 ////////////////////////////////////////* global *////////////////////////////////////
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 @media (min-width: 1200px) {
   & .container {
     max-width: 80vw;
@@ -83,6 +89,10 @@ h3 {
   position: absolute;
   top: 50vh;
   left: 50vw;
+}
+
+.justify-content-center h1 {
+  font-family: 'Pacifico', cursive;
 }
 
 ////////////////////////////////////////* nav *////////////////////////////////////
