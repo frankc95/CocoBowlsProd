@@ -211,12 +211,30 @@ nav {
     }
 
     .content {
-      width: 220px;
-      margin-left: 1px;
+      width: 190px;
+      margin-left: -3px;
     }
 
     .navbar-brand {
       margin-right: 0;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .navbar-nav {
+      height: 100vh;
+    }
+
+    .nav-link {
+      text-align: center;
+    }
+
+    .mr-auto,
+    .ml-auto {
+      width: 100%;
+      flex-direction: column;
     }
   }
 }
@@ -393,6 +411,13 @@ nav {
   &:focus,
   &:hover {
     box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .iLquPE,
+  .lgksPe {
+    display: none;
   }
 }
 
