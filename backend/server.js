@@ -1,5 +1,5 @@
 // require is a standard expression that node.js uses -> i.e. const express = require('express');
-// ES6 uses import instead
+// ES6 module uses import syntax instead
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
