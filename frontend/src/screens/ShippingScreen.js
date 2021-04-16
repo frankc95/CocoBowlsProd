@@ -6,16 +6,20 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../actions/cartActions';
 
 const ShippingScreen = ({ history }) => {
+  // the hook used to select the parts of the state that will be used in a given component
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
+  // useState hook takes two parameters, name of the initial state and name the function that will change the state. It also takes a default value inside ().
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
   const [postCode, setPostCode] = useState(shippingAddress.postCode);
   const [country, setCountry] = useState(shippingAddress.country);
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // handler
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, postCode, country }));
@@ -71,7 +75,7 @@ const ShippingScreen = ({ history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='secondary'>
           Continue
         </Button>
       </Form>

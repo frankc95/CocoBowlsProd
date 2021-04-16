@@ -7,18 +7,23 @@ import Loader from '../components/Loader';
 import { listUsers, deleteUser } from '../actions/userActions';
 
 const UserListScreen = ({ history }) => {
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
-  // Bringing the state
+  // the hook used to select the parts of the state that will be used in a given component
+  // userList links back to userList defined in store.js file
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userDelete = useSelector((state) => state.userDelete);
   const { success: successDelete } = userDelete;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
@@ -27,6 +32,7 @@ const UserListScreen = ({ history }) => {
     }
   }, [dispatch, history, successDelete, userInfo]);
 
+  // delete handler
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
       dispatch(deleteUser(id));

@@ -19,19 +19,22 @@ const ProductScreen = ({ history, match }) => {
   // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productReview = useSelector((state) => state.productReview);
   const {
     success: successProductReview,
     error: errorProductReview,
   } = productReview;
 
-  // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (successProductReview) {
       alert('Review Submitted!');
@@ -49,6 +52,7 @@ const ProductScreen = ({ history, match }) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
+  // Review handler
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -59,6 +63,7 @@ const ProductScreen = ({ history, match }) => {
     );
   };
 
+  // modal
   const options = {
     buttons: {
       backgroundColor: 'rgba(30,30,36,0.8)',
@@ -80,7 +85,7 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className='btn btn-primary my-3' to='/'>
+      <Link className='btn btn-outline-primary my-3' to='/'>
         Go Back
       </Link>
       {/* If loading show loader component, if error show message component, else, show product details */}
@@ -160,6 +165,7 @@ const ProductScreen = ({ history, match }) => {
 
                 <ListGroup.Item>
                   <Button
+                    variant='outline-secondary'
                     onClick={addToCartHandler}
                     className='btn-block'
                     type='button'
@@ -178,7 +184,9 @@ const ProductScreen = ({ history, match }) => {
           <Row className='py-3 justify-content-center'>
             <Col md={8}>
               <h2>Reviews</h2>
-              {product.reviews.length === 0 && <Message>No Reviews</Message>}
+              {product.reviews.length === 0 && (
+                <Message variant='warning'>No Reviews</Message>
+              )}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
@@ -219,7 +227,7 @@ const ProductScreen = ({ history, match }) => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
-                      <Button type='submit' variant='primary'>
+                      <Button type='submit' variant='outline-secondary'>
                         Submit
                       </Button>
                     </Form>

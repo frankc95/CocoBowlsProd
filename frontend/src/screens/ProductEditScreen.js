@@ -12,6 +12,7 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
 
+  // useState hook takes two parameters, name of the initial state and name the function that will change the state. It also takes a default value inside ().
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
@@ -24,11 +25,15 @@ const ProductEditScreen = ({ match, history }) => {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
+  // productDetails links back to productDetails defined in store.js file
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
     loading: loadingUpdate,
@@ -36,6 +41,7 @@ const ProductEditScreen = ({ match, history }) => {
     success: successUpdate,
   } = productUpdate;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -44,6 +50,7 @@ const ProductEditScreen = ({ match, history }) => {
       if (!product.name || product._id !== productId) {
         dispatch(listProductDetails(productId));
       } else {
+        // Update the state with new data
         setName(product.name);
         setPrice(product.price);
         setImage(product.image);
@@ -58,6 +65,7 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }, [dispatch, history, product, productId, successUpdate]);
 
+  // image handler
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
@@ -146,6 +154,7 @@ const ProductEditScreen = ({ match, history }) => {
     }
   };
 
+  // edit product handler
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -167,7 +176,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to='/admin/productlist' className='btn btn-light my-3'>
+      <Link to='/admin/productlist' className='btn btn-outline-secondary my-3'>
         Go Back
       </Link>
       <FormContainer>
@@ -308,7 +317,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary'>
+            <Button type='submit' variant='outline-secondary'>
               Update
             </Button>
           </Form>

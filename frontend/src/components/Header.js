@@ -7,11 +7,14 @@ import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 
 const Header = () => {
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // logout handler
   const logoutHandler = () => {
     dispatch(logout());
   };
@@ -81,13 +84,13 @@ const Header = () => {
                         </LinkContainer>
 
                         <NavDropdown.Item onClick={logoutHandler}>
-                          <i class='fas fa-sign-out-alt'></i>Logout
+                          <i className='fas fa-sign-out-alt'></i>Logout
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
                       <LinkContainer to='/login'>
                         <Nav.Link>
-                          <i class='fas fa-sign-in-alt'></i> Sign In
+                          <i className='fas fa-sign-in-alt'></i> Sign In
                         </Nav.Link>
                       </LinkContainer>
                     )}

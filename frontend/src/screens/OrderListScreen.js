@@ -9,13 +9,16 @@ import { listOrders } from '../actions/orderActions';
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  // Bringing the state
+  // the hook used to select the parts of the state that will be used in a given component
+  // orderList links back to orderList defined in store.js file
   const orderList = useSelector((state) => state.orderList);
   const { loading, error, orders } = orderList;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOrders());

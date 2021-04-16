@@ -15,12 +15,15 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 const ProductListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
-  // Bringing the state
+  // the hook used to select the parts of the state that will be used in a given component
+  // productList links back to productList defined in store.js file
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -28,6 +31,7 @@ const ProductListScreen = ({ history, match }) => {
     success: successDelete,
   } = productDelete;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const productCreate = useSelector((state) => state.productCreate);
   const {
     loading: loadingCreate,
@@ -36,9 +40,11 @@ const ProductListScreen = ({ history, match }) => {
     product: createdProduct,
   } = productCreate;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
     if (!userInfo.isAdmin) {
@@ -77,7 +83,11 @@ const ProductListScreen = ({ history, match }) => {
           <h1>Products</h1>
         </Col>
         <Col className='text-right'>
-          <Button className='my-2' onClick={createProductHandler}>
+          <Button
+            variant='outline-primary'
+            className='my-2'
+            onClick={createProductHandler}
+          >
             <i className='fas fa-plus'></i> Add Product
           </Button>
         </Col>

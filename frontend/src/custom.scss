@@ -4,20 +4,23 @@
 $theme-colors: (
   // 'primary': #a4a366,
   // 'secondary': #fec503,
-  'primary': #949231,
-  'secondary': #9ab6da,
-  'dark': #386086,
+  // 'primary': #949231,
+  'primary': #e69e39,
+  'secondary': #3f9df2,
+  'dark': #212529,
+  // 'dark': #386086,
   'light': #f2efee,
   'success': #66ab57,
-  'info': #9ab6da,
-  'warning': #e49b1f,
+  'info': #5cb2ff,
+  'warning': #a66a0a,
   'danger': #f44336,
-  'primary-orange': #fec503 //before: fed136
+  'primary-orange': #a66a0a //before: fed136
+  // 'primary-orange': #fec503 //before: fed136
 );
 
 $primary-bg: #212529;
 $link-light-grey: #6c757d;
-$primary-orange: #fec503; //before: fed136
+$primary-orange: #ffaf3f; //before: fed136
 $footer-background-light-grey: #212529;
 $footer-background-grey: #1a1d20;
 $social-buttons-circle-dark-grey: #1a1d20;
@@ -63,6 +66,9 @@ main {
   min-height: 80vh;
   overflow: hidden;
 }
+body {
+  background-color: #eef0f0;
+}
 .sp {
   padding-top: 1rem;
 }
@@ -93,6 +99,21 @@ h3 {
 
 .justify-content-center h1 {
   font-family: 'Pacifico', cursive;
+  color: rgba(230, 158, 57, 0.9);
+}
+
+.list-group-item {
+  background-color: #f1f1f1;
+}
+
+.btn:disabled {
+  color: rgba($color: #fff, $alpha: 0.5);
+  background-color: #6d99c0;
+  border-color: #6d99c0;
+}
+
+.center {
+  text-align: center;
 }
 
 ////////////////////////////////////////* nav *////////////////////////////////////
@@ -105,6 +126,17 @@ nav {
   .navbar-nav {
     align-items: center;
     width: 100% !important;
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+
+    &.active,
+    :focus,
+    :active,
+    :hover {
+      color: rgba(255, 255, 255, 1) !important;
+    }
   }
 
   .navbar-toggler {
@@ -388,7 +420,7 @@ nav {
 .lgksPe,
 .jAmbxV {
   background: none !important;
-  color: #333 !important;
+  color: rgb(230, 158, 57) !important;
   width: 0;
   height: 0;
   min-width: none;
@@ -397,7 +429,7 @@ nav {
   overflow: hidden;
 
   &:hover {
-    color: #000 !important;
+    color: rgb(230, 158, 57) !important;
     background: rgba(0, 0, 0, 0.1) !important;
     box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.1) !important;
   }
@@ -405,22 +437,22 @@ nav {
 
 .cJeRRR,
 .kzPUbE {
-  background-color: rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  background-color: rgba(230, 158, 57, 0.9) !important;
+  box-shadow: 0 0 1px 1px rgba(230, 158, 57, 0.9) !important;
 
   &:focus,
   &:hover {
-    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 1px 1px rgba(230, 158, 57, 0.9) !important;
   }
 }
 
 .guuruq {
-  background-color: rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(230, 158, 57, 0.5) !important;
+  box-shadow: 0 0 1px 1px rgba(230, 158, 57, 0.5) !important;
 
   &:focus,
   &:hover {
-    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 1px 1px rgba(230, 158, 57, 0.9) !important;
   }
 }
 
@@ -443,6 +475,10 @@ nav {
 .card-img-top {
   min-height: 260px;
   object-fit: cover;
+}
+
+.card-body {
+  background-color: #f3f3f3;
 }
 
 ////////////////////////////////////////* Product Screen *////////////////////////////////////

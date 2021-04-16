@@ -75,7 +75,7 @@ const ContactForm = () => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <Button type='submit' variant='outline-primary'>
             Send Message
           </Button>
         </Form>

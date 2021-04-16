@@ -40,7 +40,7 @@ const HomeScreens = ({ match }) => {
   const productCatCutlery = useSelector((state) => state.productCatCutlery);
   const { products: productsCatCutlery } = productCatCutlery;
 
-  // it needs to be defined and next, it takes an arrow function and whatever is inside the function will run as soon as the component loads. As a second argument, it takes an array[] of dependencies.
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     // sends a request to the backend to list all the products
     dispatch(listProducts(keyword, pageNumber));

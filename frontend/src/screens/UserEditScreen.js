@@ -11,15 +11,20 @@ import { USER_UPDATE_RESET } from '../constants/userConstants';
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id;
 
+  // useState hook takes two parameters, name of the initial state and name the function that will change the state. It also takes a default value inside ().
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
+  // userDetails links back to userDetails defined in store.js file
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userUpdate = useSelector((state) => state.userUpdate);
   const {
     loading: loadingUpdate,
@@ -27,6 +32,7 @@ const UserEditScreen = ({ match, history }) => {
     success: successUpdate,
   } = userUpdate;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
@@ -42,6 +48,7 @@ const UserEditScreen = ({ match, history }) => {
     }
   }, [dispatch, history, user, userId, successUpdate]);
 
+  // update user handler
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateUser({ _id: userId, name, email, isAdmin }));

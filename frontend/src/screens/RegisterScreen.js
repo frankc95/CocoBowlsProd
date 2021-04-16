@@ -15,19 +15,24 @@ const RegisterScreen = ({ location, history }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
+  // if not logged in, used to redirect user to a desired desitnation after logging in.
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
     }
   }, [history, userInfo, redirect]);
 
+  // handler
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {

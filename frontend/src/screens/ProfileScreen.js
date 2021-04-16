@@ -10,26 +10,34 @@ import { listMyOrders } from '../actions/orderActions';
 import Meta from '../components/Meta';
 
 const ProfileScreen = ({ location, history }) => {
+  // useState hook takes two parameters, name of the initial state and name the function that will change the state. It also takes a default value inside ().
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
 
+  // the hook used to call in an action requests from functional components
   const dispatch = useDispatch();
 
+  // the hook used to select the parts of the state that will be used in a given component
+  // userDetails links back to userDetails defined in store.js file
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const { success } = userUpdateProfile;
 
+  // the hook used to select the parts of the state that will be used in a given component
   const orderListMy = useSelector((state) => state.orderListMy);
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
+  // define useEffect, apply an arrow function and whatever is inside the function will run as soon as the component loads. As the second argument, it takes an array[] of dependencies.
   useEffect(() => {
     if (!userInfo) {
       history.push('/login');
@@ -104,7 +112,7 @@ const ProfileScreen = ({ location, history }) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <Button type='submit' variant='outline-primary'>
             Update
           </Button>
         </Form>

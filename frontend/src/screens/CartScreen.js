@@ -54,8 +54,11 @@ const CartScreen = ({ match, location, history }) => {
         <h1>Shopping Cart</h1>
         {/* check if there is anything in the cart. If there isn't, show message. If there is, show product info in the cart  */}
         {cartItems.length === 0 ? (
-          <Message>
-            Your cart is empty <Link to='/'>Go Back</Link>
+          <Message variant='warning'>
+            Your cart is empty{' '}
+            <Link to='/' className='text-primary'>
+              Go Back
+            </Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -111,7 +114,7 @@ const CartScreen = ({ match, location, history }) => {
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              {/* Get the price for all items and their quantity */}£
+              {/* Get the price for all items and their quantity */}£{' '}
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
@@ -119,7 +122,7 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item>
               <Button
                 type='button'
-                className='btn-block'
+                className='btn-block btn-secondary'
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
