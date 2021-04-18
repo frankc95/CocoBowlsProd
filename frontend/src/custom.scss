@@ -100,6 +100,7 @@ h3 {
 .justify-content-center h1 {
   font-family: 'Pacifico', cursive;
   color: rgba(230, 158, 57, 0.9);
+  font-size: 2.5rem;
 }
 
 .list-group-item {
@@ -157,6 +158,21 @@ nav {
     vertical-align: 0.1em;
     border-right: 0.25em solid transparent;
     border-left: 0.25em solid transparent;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+
+    a.active {
+      margin-left: 20% !important;
+      margin-bottom: 5px;
+      color: #000 !important;
+
+      &:hover {
+        color: $primary-orange !important;
+      }
+    }
   }
 
   .content {

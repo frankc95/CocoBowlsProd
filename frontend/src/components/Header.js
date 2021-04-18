@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown, Image } from 'react-bootstrap';
@@ -40,10 +41,28 @@ const Header = () => {
                   id='products'
                   className='nav-link'
                 >
-                  <NavDropdown.Item href='/#sets'> Sets</NavDropdown.Item>
-                  <NavDropdown.Item href='/#bowls'>Bowls</NavDropdown.Item>
-                  <NavDropdown.Item href='/#cutlery'>Cutlery</NavDropdown.Item>
+                  <LinkContainer to='/'>
+                    <Link to='sets' smooth={true} offset={-70} duration={100}>
+                      Sets
+                    </Link>
+                  </LinkContainer>
+                  <LinkContainer to='/'>
+                    <Link to='bowls' smooth={true} offset={-70} duration={100}>
+                      Bowls
+                    </Link>
+                  </LinkContainer>
+                  <LinkContainer to='/'>
+                    <Link
+                      to='cutlery'
+                      smooth={true}
+                      offset={-70}
+                      duration={100}
+                    >
+                      Cutlery
+                    </Link>
+                  </LinkContainer>
                 </NavDropdown>
+
                 <LinkContainer to='/contact'>
                   <Nav.Link>
                     <i className='fas fa-envelope'></i> Contact
@@ -71,9 +90,11 @@ const Header = () => {
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
-                    </NavDropdown.Item>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Logout
+                      </NavDropdown.Item>
+                    </LinkContainer>
                   </NavDropdown>
                 ) : (
                   <>
