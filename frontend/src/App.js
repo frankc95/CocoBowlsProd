@@ -29,7 +29,7 @@ const App = () => {
       {/* scrolls to top of page when new component loads */}
       <ScrollToTop>
         <Header />
-        <main>
+        <main id='top'>
           {/* Bootstrap container */}
           <Container>
             {/* Looks for a matching <Route> and once it finds it, it will stop looking further, outputting only one child (One Route) */}
