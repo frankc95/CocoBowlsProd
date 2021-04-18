@@ -164,13 +164,18 @@ nav {
     display: flex;
     flex-direction: column;
 
-    a.active {
-      margin-left: 20% !important;
-      margin-bottom: 5px;
+    a {
       color: #000 !important;
+      padding: 3px 15% !important;
 
       &:hover {
         color: $primary-orange !important;
+        background-color: #e9ecef;
+      }
+
+      &:focus {
+        color: white !important;
+        background-color: $primary-orange;
       }
     }
   }

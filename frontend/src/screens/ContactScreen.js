@@ -65,7 +65,12 @@ const ContactScreen = () => {
           <div className='faqs'>
             <h1 className='px-3'>FAQs</h1>
             {faqs.map((faq, i) => (
-              <FAQs faq={faq} index={i} toggleFAQ={toggleFAQ} />
+              <FAQs
+                key={Math.random()}
+                faq={faq}
+                index={i}
+                toggleFAQ={toggleFAQ}
+              />
             ))}
           </div>
         </Col>
