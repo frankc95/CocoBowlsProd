@@ -101,6 +101,7 @@ h3 {
   font-family: 'Pacifico', cursive;
   color: rgba(230, 158, 57, 0.9);
   font-size: 2.5rem;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .list-group-item {
@@ -160,7 +161,12 @@ nav {
     border-left: 0.25em solid transparent;
   }
 
-  .dropdown-menu.show {
+  .dropdown-item.active {
+    background-color: white;
+  }
+
+  .dropdown-menu.show,
+  .dropdown-item.active {
     display: flex;
     flex-direction: column;
 
@@ -178,6 +184,10 @@ nav {
         background-color: $primary-orange;
       }
     }
+  }
+
+  .navbar-toggler {
+    border: 0 !important;
   }
 
   .content {
@@ -216,6 +226,7 @@ nav {
       height: var(--size);
       background-color: white;
       border-radius: 0;
+      font-size: 0.9rem;
     }
 
     &__submit {
@@ -306,15 +317,15 @@ nav {
 
 .carousel {
   background: radial-gradient(rgba(0, 20, 0, 0.5), black),
-    url(./images/carousel-bg.jpg) no-repeat center;
+    url(./images/carousel-bg.webp) no-repeat center;
   background-size: cover;
-  min-width: 102vw;
-  margin-left: -12vw;
+  min-width: 100vw;
   min-height: 400px;
   height: 80vh;
+  margin: 0 -15vw;
 
   @media (max-width: 768px) {
-    margin-left: -5vw;
+    margin: 0 -15px;
   }
 
   &-item-left,
@@ -362,7 +373,7 @@ nav {
     @media (max-width: 768px) {
       position: absolute;
       bottom: unset;
-      background: radial-gradient(rgba(0, 0, 0, 0.7), transparent);
+      background: rgba(0, 0, 0, 0.4);
       height: 100%;
       width: 100%;
       display: flex;

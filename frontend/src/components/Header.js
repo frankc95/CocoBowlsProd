@@ -44,6 +44,9 @@ const Header = () => {
                   className='nav-link'
                 >
                   <LinkContainer to='/'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/'>
                     <Link to='sets' smooth={true} offset={-70} duration={100}>
                       Sets
                     </Link>
