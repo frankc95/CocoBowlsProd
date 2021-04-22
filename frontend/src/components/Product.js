@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import Rating from './Rating';
 
+// De-structuring props
 const Product = ({ product }) => {
   return (
     <Card className='rounded'>

@@ -25,7 +25,7 @@ const Header = () => {
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Link to='top' smooth={true} offset={-70} duration={100}>
+            <Link to='top' smooth={true} offset={0} duration={100}>
               <Navbar.Brand className='logo'>
                 <Image src='/images/logo.png' alt='logo' />
               </Navbar.Brand>

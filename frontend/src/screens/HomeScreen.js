@@ -109,10 +109,12 @@ const HomeScreens = ({ match }) => {
             <>
               <div className='sp' id='sets'></div>
               <Row className='justify-content-center'>
-                <h1>Sets</h1>
+                <h1 className='headers'>Sets</h1>
                 <Carousel breakPoints={breakPoints}>
+                  {/* Mapping through products array */}
                   {productsCatSet.map((product) => (
                     <Col key={product._id}>
+                      {/* Passing props to child component - (Product) */}
                       <Product product={product} />
                     </Col>
                   ))}
@@ -121,10 +123,12 @@ const HomeScreens = ({ match }) => {
 
               <div className='sp' id='bowls'></div>
               <Row className='justify-content-center'>
-                <h1>Bowls</h1>
+                <h1 className='headers'>Bowls</h1>
                 <Carousel breakPoints={breakPoints}>
+                  {/* Mapping through products array */}
                   {productsCatBowl.map((product) => (
                     <Col key={product._id}>
+                      {/* Passing props to child component - (Product) */}
                       <Product product={product} />
                     </Col>
                   ))}
@@ -133,7 +137,7 @@ const HomeScreens = ({ match }) => {
 
               <div className='sp' id='cutlery'></div>
               <Row className='justify-content-center'>
-                <h1>Cutlery</h1>
+                <h1 className='headers'>Cutlery</h1>
                 <Carousel breakPoints={breakPoints}>
                   {productsCatCutlery.map((product) => (
                     <Col key={product._id}>

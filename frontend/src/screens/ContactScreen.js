@@ -63,7 +63,7 @@ const ContactScreen = () => {
       <Row className='py-3 justify-content-center'>
         <Col md={8}>
           <div className='faqs'>
-            <h1 className='px-3'>FAQs</h1>
+            <h1 className='headers px-3'>FAQs</h1>
             {faqs.map((faq, i) => (
               <FAQs
                 key={Math.random()}

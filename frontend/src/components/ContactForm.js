@@ -26,7 +26,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <h1 className='px-3'>Contact Us</h1>
+      <h1 className='px-3 headers'>Contact Us</h1>
       <div className='container'>
         <Form onSubmit={sendEmail}>
           <Form.Group controlId='name'>

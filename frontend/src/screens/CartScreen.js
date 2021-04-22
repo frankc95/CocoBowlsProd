@@ -51,7 +51,7 @@ const CartScreen = ({ match, location, history }) => {
     <Row className='py-3'>
       <Meta title='Checkout' />
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1 className='headers'>Shopping Cart</h1>
         {/* check if there is anything in the cart. If there isn't, show message. If there is, show product info in the cart  */}
         {cartItems.length === 0 ? (
           <Message variant='warning'>
